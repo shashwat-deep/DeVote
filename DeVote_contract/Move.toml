@@ -1,0 +1,17 @@
+[package]
+name = "Voting_System"
+version = "1.0.0"
+authors = []
+
+[addresses]
+lnmhacks = "_"
+
+[dev-addresses]
+lnmhacks = "0x1234"
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
