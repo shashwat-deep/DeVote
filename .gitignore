@@ -50,3 +50,6 @@ venv/
 
 # Misc
 .cache/
+
+# Claude Code local agent workspace
+.claude/

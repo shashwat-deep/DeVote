@@ -1,0 +1,12 @@
+{
+  "name": "@devote/move-contract",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aptos Move smart contracts for DeVote.",
+  "scripts": {
+    "compile": "aptos move compile --named-addresses devote=default",
+    "test": "aptos move test --named-addresses devote=default",
+    "fmt": "aptos move fmt",
+    "publish:contract": "aptos move publish --named-addresses devote=default --assume-yes"
+  }
+}
