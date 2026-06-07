@@ -1,0 +1,18 @@
+[package]
+name = "DeVote"
+version = "1.0.0"
+authors = ["DeVote contributors"]
+license = "MIT"
+
+[addresses]
+devote = "_"
+
+[dev-addresses]
+devote = "0xCAFE"
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-core.git"
+rev = "mainnet"
+subdir = "aptos-move/framework/aptos-framework"
+
+[dev-dependencies]

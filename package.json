@@ -1,70 +1,64 @@
 {
-    "name": "voting",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@emotion/react": "^11.10.0",
-        "@emotion/styled": "^11.10.0",
-        "@mui/icons-material": "^5.8.4",
-        "@mui/material": "^5.9.3",
-        "@mui/styles": "^5.9.3",
-        "@testing-library/jest-dom": "^5.16.5",
-        "@testing-library/react": "^13.3.0",
-        "@testing-library/user-event": "^13.5.0",
-        "classnames": "^2.3.1",
-        "prop-types": "^15.8.1",
-        "react": "^18.3.1",
-        "@aptos-labs/aptos": "^0.0.1" ,
-        "react-dom": "^18.3.1",
-        "react-router-dom": "^6.3.0",
-        "react-scripts": "5.0.1",
-        "react-toastify": "^9.0.8",
-        "web-vitals": "^2.1.4",
-        "web3": "^1.7.5"
-        
-    },
-    "devDependencies": {
-        "assert": "^2.0.0",
-        "buffer": "^6.0.3",
-        "chai": "^4.1.2",
-        "chai-as-promised": "^7.1.1",
-        "chai-bignumber": "^2.0.2",
-        "crypto-browserify": "^3.12.0",
-        "https-browserify": "^1.0.0",
-        "lite-server": "^2.3.0",
-        "os-browserify": "^0.3.0",
-        "process": "^0.11.10",
-        "react-app-rewired": "^2.2.1",
-        "stream-browserify": "^3.0.0",
-        "stream-http": "^3.2.0",
-        "truffle": "5.0.2",
-        "truffle-contract": "3.0.6",
-        "url": "^0.11.0"
-    },
-    "scripts": {
-        "start": "react-app-rewired start",
-        "build": "react-app-rewired build",
-        "test": "react-app-rewired test",
-        "eject": "react-app-rewired eject"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+  "name": "devote",
+  "version": "0.0.0",
+  "private": true,
+  "description": "DeVote — a decentralized voting dApp on the Aptos blockchain.",
+  "license": "MIT",
+  "packageManager": "pnpm@10.30.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @devote/web dev",
+    "build": "pnpm --filter @devote/web build",
+    "preview": "pnpm --filter @devote/web preview",
+    "test": "pnpm --filter @devote/web test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "move:compile": "pnpm --filter @devote/move-contract compile",
+    "move:test": "pnpm --filter @devote/move-contract test",
+    "scaffold": "plop",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,mjs,cjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml,css,html}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/js": "^9.17.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "plop": "^4.0.5",
+    "prettier": "^3.4.2",
+    "semantic-release": "^24.2.1",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ],
+    "overrides": {
+      "uuid@<11.1.1": ">=11.1.1"
     }
-    
-    
+  }
 }

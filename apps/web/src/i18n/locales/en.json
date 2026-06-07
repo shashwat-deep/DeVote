@@ -1,0 +1,68 @@
+{
+  "app": {
+    "name": "DeVote",
+    "tagline": "Decentralized Voting on Aptos"
+  },
+  "nav": {
+    "home": "Home",
+    "create": "Create Ballot",
+    "vote": "Vote",
+    "results": "Results"
+  },
+  "wallet": {
+    "connect": "Connect Wallet",
+    "disconnect": "Disconnect",
+    "noWallets": "No Aptos wallet detected.",
+    "connected": "Connected"
+  },
+  "theme": {
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode"
+  },
+  "common": {
+    "ballotAddress": "Ballot Address",
+    "load": "Load Ballot",
+    "loading": "Loading…",
+    "proposal": "Proposal",
+    "official": "Ballot Official",
+    "connectFirst": "Connect your wallet to continue.",
+    "noBallot": "No ballot found at that address."
+  },
+  "state": {
+    "created": "Created",
+    "voting": "Voting open",
+    "ended": "Ended"
+  },
+  "create": {
+    "title": "Create Ballot",
+    "name": "Ballot Name",
+    "proposalLabel": "Proposal",
+    "submit": "Create Ballot",
+    "alreadyCreated": "You already have a ballot under this account.",
+    "choicesTitle": "Choices",
+    "addChoice": "Add Choice",
+    "choiceLabel": "Choice",
+    "votersTitle": "Voters",
+    "voterAddress": "Voter Address",
+    "voterName": "Voter Name",
+    "addVoter": "Register Voter",
+    "start": "Start Voting",
+    "registered": "{{count}} voter(s) registered.",
+    "noVoters": "No voters registered yet."
+  },
+  "vote": {
+    "title": "Cast Your Vote",
+    "notStarted": "Voting has not started yet.",
+    "ended": "Voting has ended — see the results.",
+    "alreadyVoted": "You have already cast your vote.",
+    "notRegistered": "You are not registered for this ballot.",
+    "pick": "Select your choice",
+    "progress": "{{voted}} / {{total}} voters have voted."
+  },
+  "results": {
+    "title": "Results",
+    "notEnded": "Voting has not ended yet.",
+    "show": "Get Results",
+    "votes": "votes"
+  }
+}

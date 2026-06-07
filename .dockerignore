@@ -1,0 +1,12 @@
+**/node_modules
+**/dist
+**/build
+**/coverage
+**/.aptos
+.git
+.github
+.husky
+*.log
+.claude
+.env
+.env.*
