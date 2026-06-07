@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import { App } from '@/App';
+import { WalletProvider } from '@/providers/WalletProvider';
+import { ThemeModeProvider } from '@/theme/ThemeModeProvider';
+import '@/i18n';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -11,8 +14,12 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <WalletProvider>
+      <ThemeModeProvider>
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <App />
+        </BrowserRouter>
+      </ThemeModeProvider>
+    </WalletProvider>
   </StrictMode>,
 );

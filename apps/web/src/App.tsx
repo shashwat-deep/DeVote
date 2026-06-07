@@ -1,32 +1,30 @@
-import { Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { NavBar } from '@/components/NavBar';
-import { ComingSoon } from '@/pages/ComingSoon';
+import { CreateBallotPage } from '@/pages/CreateBallotPage';
 import { HomePage } from '@/pages/HomePage';
-
-// NOTE: A full multi-theme / dark-mode system is introduced in milestone M4.
-// This is a minimal light theme so the shell builds and renders.
-const theme = createTheme({
-  palette: { mode: 'light', primary: { main: '#1565c0' } },
-});
+import { ResultsPage } from '@/pages/ResultsPage';
+import { VotePage } from '@/pages/VotePage';
+import { useThemeMode } from '@/theme/themeMode';
 
 export function App() {
+  const { mode } = useThemeMode();
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <ToastContainer position="top-right" autoClose={5000} />
+    <>
+      <ToastContainer position="top-right" autoClose={5000} theme={mode} />
       <NavBar />
       <Box component="main">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/ballot" element={<ComingSoon title="Create Ballot" />} />
-          <Route path="/voting" element={<ComingSoon title="Cast Your Vote" />} />
-          <Route path="/result" element={<ComingSoon title="Results" />} />
+          <Route path="/ballot" element={<CreateBallotPage />} />
+          <Route path="/voting" element={<VotePage />} />
+          <Route path="/result" element={<ResultsPage />} />
         </Routes>
       </Box>
-    </ThemeProvider>
+    </>
   );
 }

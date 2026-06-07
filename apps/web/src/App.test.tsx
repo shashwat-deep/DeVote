@@ -1,25 +1,35 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { describe, expect, it } from 'vitest';
+import { screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 
-import { App } from '@/App';
+// Mock the wallet adapter so components that call useWallet render without a provider.
+vi.mock('@aptos-labs/wallet-adapter-react', () => ({
+  useWallet: () => ({
+    account: null,
+    connected: false,
+    wallets: [],
+    connect: vi.fn(),
+    disconnect: vi.fn(),
+    signAndSubmitTransaction: vi.fn(),
+  }),
+  AptosWalletAdapterProvider: ({ children }: { children: React.ReactNode }) => children,
+}));
 
-describe('App shell', () => {
+import { renderApp } from '@/test/renderApp';
+import '@/i18n';
+
+describe('App', () => {
   it('renders the DeVote brand in the navigation', () => {
-    render(
-      <MemoryRouter initialEntries={['/']}>
-        <App />
-      </MemoryRouter>,
-    );
-    expect(screen.getAllByText(/DeVote/i).length).toBeGreaterThan(0);
+    renderApp('/');
+    expect(screen.getAllByText('DeVote').length).toBeGreaterThan(0);
   });
 
-  it('renders a placeholder for the create-ballot route', () => {
-    render(
-      <MemoryRouter initialEntries={['/ballot']}>
-        <App />
-      </MemoryRouter>,
-    );
-    expect(screen.getByRole('heading', { name: /create ballot/i })).toBeInTheDocument();
+  it('prompts to connect a wallet on the create page when disconnected', () => {
+    renderApp('/ballot');
+    expect(screen.getByText(/connect your wallet/i)).toBeInTheDocument();
+  });
+
+  it('shows the ballot-address loader on the vote page', () => {
+    renderApp('/voting');
+    expect(screen.getByLabelText(/ballot address/i)).toBeInTheDocument();
   });
 });
