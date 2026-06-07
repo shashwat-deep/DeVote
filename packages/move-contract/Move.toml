@@ -1,17 +1,18 @@
 [package]
-name = "Voting_System"
+name = "DeVote"
 version = "1.0.0"
-authors = []
+authors = ["DeVote contributors"]
+license = "MIT"
 
 [addresses]
-lnmhacks = "_"
+devote = "_"
 
 [dev-addresses]
-lnmhacks = "0x1234"
+devote = "0xCAFE"
 
 [dependencies.AptosFramework]
-git = "https://github.com/aptos-labs/aptos-framework.git"
+git = "https://github.com/aptos-labs/aptos-core.git"
 rev = "mainnet"
-subdir = "aptos-framework"
+subdir = "aptos-move/framework/aptos-framework"
 
 [dev-dependencies]
