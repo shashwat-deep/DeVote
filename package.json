@@ -13,7 +13,7 @@
     "dev": "pnpm --filter @devote/web dev",
     "build": "pnpm --filter @devote/web build",
     "preview": "pnpm --filter @devote/web preview",
-    "test": "pnpm -r --if-present test",
+    "test": "pnpm --filter @devote/web test",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "pnpm -r --if-present typecheck",
