@@ -21,6 +21,7 @@
     "format:check": "prettier --check .",
     "move:compile": "pnpm --filter @devote/move-contract compile",
     "move:test": "pnpm --filter @devote/move-contract test",
+    "scaffold": "plop",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -46,6 +47,7 @@
     "globals": "^15.14.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.3.0",
+    "plop": "^4.0.5",
     "prettier": "^3.4.2",
     "semantic-release": "^24.2.1",
     "typescript": "^5.7.2",
@@ -54,6 +56,9 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
-    ]
+    ],
+    "overrides": {
+      "uuid@<11.1.1": ">=11.1.1"
+    }
   }
 }

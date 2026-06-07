@@ -1,26 +1,47 @@
 import { Network } from '@aptos-labs/ts-sdk';
+import { z } from 'zod';
 
-const NETWORKS: Record<string, Network> = {
+const NETWORKS = {
   testnet: Network.TESTNET,
   devnet: Network.DEVNET,
   mainnet: Network.MAINNET,
   local: Network.LOCAL,
-};
+} as const;
 
-function resolveNetwork(raw: string | undefined): Network {
-  return NETWORKS[(raw ?? 'testnet').toLowerCase()] ?? Network.TESTNET;
+const optionalString = z
+  .string()
+  .optional()
+  .transform((value) => (value ? value : undefined));
+
+const schema = z.object({
+  VITE_APTOS_NETWORK: z.enum(['testnet', 'devnet', 'mainnet', 'local']).default('testnet'),
+  VITE_MODULE_ADDRESS: z
+    .string()
+    .regex(/^0x[0-9a-fA-F]{1,64}$/, 'must be a 0x-prefixed hex address')
+    .or(z.literal(''))
+    .default(''),
+  VITE_APTOS_FULLNODE_URL: optionalString,
+  VITE_APTOS_INDEXER_URL: optionalString,
+  VITE_SENTRY_DSN: optionalString,
+});
+
+const parsed = schema.safeParse(import.meta.env);
+if (!parsed.success) {
+  const issues = parsed.error.issues
+    .map((issue) => `  - ${issue.path.join('.') || '(root)'}: ${issue.message}`)
+    .join('\n');
+  throw new Error(`Invalid environment configuration:\n${issues}`);
 }
 
-/**
- * Typed, centralized access to build-time configuration.
- * Runtime schema validation (zod) is layered on in milestone M5.
- */
+const data = parsed.data;
+
+/** Validated, typed, centralized runtime configuration. */
 export const env = {
-  network: resolveNetwork(import.meta.env.VITE_APTOS_NETWORK),
-  moduleAddress: import.meta.env.VITE_MODULE_ADDRESS ?? '',
-  fullnodeUrl: import.meta.env.VITE_APTOS_FULLNODE_URL || undefined,
-  indexerUrl: import.meta.env.VITE_APTOS_INDEXER_URL || undefined,
-  sentryDsn: import.meta.env.VITE_SENTRY_DSN || undefined,
+  network: NETWORKS[data.VITE_APTOS_NETWORK],
+  moduleAddress: data.VITE_MODULE_ADDRESS,
+  fullnodeUrl: data.VITE_APTOS_FULLNODE_URL,
+  indexerUrl: data.VITE_APTOS_INDEXER_URL,
+  sentryDsn: data.VITE_SENTRY_DSN,
 } as const;
 
 export function assertModuleAddress(): string {

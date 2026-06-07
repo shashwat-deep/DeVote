@@ -6,3 +6,6 @@ pnpm-lock.yaml
 CHANGELOG.md
 **/build/
 .aptos/
+
+# Handlebars scaffolding templates (not valid TS/JS)
+*.hbs

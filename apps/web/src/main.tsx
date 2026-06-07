@@ -3,9 +3,12 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import { App } from '@/App';
+import { initTelemetry } from '@/lib/telemetry';
 import { WalletProvider } from '@/providers/WalletProvider';
 import { ThemeModeProvider } from '@/theme/ThemeModeProvider';
 import '@/i18n';
+
+void initTelemetry();
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

@@ -16,6 +16,23 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    // The Aptos SDK is a single ~1.2 MB vendor chunk; isolated for caching.
+    // Lazy-loading it per-route is tracked as a follow-up optimization.
+    chunkSizeWarningLimit: 1300,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-aptos': ['@aptos-labs/ts-sdk', '@aptos-labs/wallet-adapter-react'],
+          'vendor-mui': [
+            '@mui/material',
+            '@mui/icons-material',
+            '@emotion/react',
+            '@emotion/styled',
+          ],
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+        },
+      },
+    },
   },
   test: {
     globals: true,
