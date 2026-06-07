@@ -1,3 +1,28 @@
+# 1.0.0 (2026-06-07)
+
+
+* refactor!: establish pnpm monorepo and purge legacy Ethereum stack ([c9be7dd](https://github.com/shashwat-deep/DeVote/commit/c9be7ddb08532c977cc954428e9e97c470bbfbc8))
+
+
+### Bug Fixes
+
+* **ci:** scope root test script to the web app ([404b394](https://github.com/shashwat-deep/DeVote/commit/404b39435983bfa472c2fd96dece42cc3595b7f6))
+
+
+### Features
+
+* **contract:** rewrite Aptos Move voting module with full lifecycle ([5485ec6](https://github.com/shashwat-deep/DeVote/commit/5485ec66a0f54d64e4dd47af428e9b6b17d62f5f))
+* **quality:** env validation, telemetry, security hardening, scaffolder ([57e07ad](https://github.com/shashwat-deep/DeVote/commit/57e07ad3db7858bb9566b8f5e5b4bc669dfa3e93))
+* **web:** real Aptos/Petra integration with ports-and-adapters architecture ([8e82e70](https://github.com/shashwat-deep/DeVote/commit/8e82e70916c5b9b44aed66bbf30b9dd12dbbeb06))
+
+
+### BREAKING CHANGES
+
+* project layout moved to a monorepo; the Ethereum/web3
+contract implementation and its build pipeline are removed entirely.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+
 # Changelog
 
 All notable changes to this project are documented here. This file is
